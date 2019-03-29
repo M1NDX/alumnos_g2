@@ -1,0 +1,64 @@
+
+    <div class="container-fluid">
+
+      <img class="rounded-circle d-block mx-auto" src="https://randomuser.me/api/portraits/women/0.jpg">
+  
+  
+      <form  >
+          <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" class="form-control nombre"  name="nombre" id="" aria-describedby="helpId"
+                  placeholder="nombre alumno" required  >
+         
+              <label for="">Carrera</label>
+              <!-- <input type="text" class="form-control carrera" [(ngModel)]="alumno.carrera" ngModel name="carrera" id="" aria-describedby="helpId"
+                  placeholder="carrera alumno" required> -->
+  
+                  <div class="form-group">
+                    <select  class="form-control"  name="carrera"  >
+                      <!-- <option *ngFor="let opcion of carreras" > 
+                          {{ opcion }}
+                      </option> -->
+                    </select>
+                  </div>
+          
+              <label for="">Edad</label>
+              <input type="number" class="form-control edad"    name="edad" min="15" max="80"  id=""
+                  aria-describedby="helpId" placeholder="edad alumno" required>
+          
+              <label for="">Calificación</label>
+              <input type="number" class="form-control calificación"   min="50.0" max="100.0"  name="calificacion"
+                  id="" aria-describedby="helpId" placeholder="calificación alumno" required>
+          </div>
+          <div class="radioB" >
+  
+              <div class="form-check">
+                  <label class="form-check-label">
+                      <input 
+                        type="radio" 
+                        class="form-check-input sexoF" 
+                        name="sexo"  
+                        value="F"
+                        checked >
+                      Mujer
+                  </label>
+              </div>
+  
+              <div class="form-check">
+                  <label class="form-check-label">
+                      <input 
+                          type="radio" 
+                          class="form-check-input sexoM"  
+                          name="sexo" 
+                          value="M">
+                      Hombre
+                  </label>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" >cancelar</button>
+              <button type="submit" class="btn btn-primary save" >Save</button>
+          </div>
+  
+      </form>
+  </div>

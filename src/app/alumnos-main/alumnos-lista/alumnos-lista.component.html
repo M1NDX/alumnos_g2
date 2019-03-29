@@ -1,0 +1,13 @@
+<!-- <p *ngFor="let alu of alumnos"> 
+  {{alu.id}} nombre:{{alu.nombre}}
+ </p> -->
+<div class="media-list lista justify-content-left">
+    <app-alumno 
+      *ngFor="let alu of alumnos" 
+      [alumno]="alu" 
+      (editAlumno) = "editar($event)"
+      (deleteAlumno) = "borrar($event)"
+    >
+    </app-alumno>
+
+</div>
