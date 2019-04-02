@@ -1,13 +1,13 @@
 
     <div class="container-fluid">
 
-      <img class="rounded-circle d-block mx-auto" src="https://randomuser.me/api/portraits/women/0.jpg">
+      <img class="rounded-circle d-block mx-auto" src="https://randomuser.me/api/portraits/{{alumno.sexo=='F'?'women':'men'}}/{{alumno.id}}.jpg">
   
   
-      <form  >
+      <form #f="ngForm" (ngSubmit)="save(f)"  >
           <div class="form-group">
               <label for="">Nombre</label>
-              <input type="text" class="form-control nombre"  name="nombre" id="" aria-describedby="helpId"
+              <input [(ngModel)]="alumno.nombre" type="text" class="form-control nombre"  name="nombre" id="" aria-describedby="helpId"
                   placeholder="nombre alumno" required  >
          
               <label for="">Carrera</label>
@@ -15,26 +15,30 @@
                   placeholder="carrera alumno" required> -->
   
                   <div class="form-group">
-                    <select  class="form-control"  name="carrera"  >
-                      <!-- <option *ngFor="let opcion of carreras" > 
+                    <select [(ngModel)]="alumno.carrera" class="form-control"  name="carrera"  >  
+                      <option *ngFor="let opcion of carreras" > 
                           {{ opcion }}
-                      </option> -->
+                      </option>
                     </select>
                   </div>
           
               <label for="">Edad</label>
-              <input type="number" class="form-control edad"    name="edad" min="15" max="80"  id=""
+              <input [(ngModel)]="alumno.edad" type="number" class="form-control edad"    name="edad" min="15" max="80"  id=""
                   aria-describedby="helpId" placeholder="edad alumno" required>
           
               <label for="">Calificación</label>
-              <input type="number" class="form-control calificación"   min="50.0" max="100.0"  name="calificacion"
+              <input [class.err]="!calificacionValida()"  [(ngModel)]="alumno.calificacion" type="number" class="form-control calificación"   min="50.0" max="100.0"  name="calificacion"
                   id="" aria-describedby="helpId" placeholder="calificación alumno" required>
+              <div *ngIf="alumno.calificacion<50 || alumno.calificacion >100" class="alert alert-danger" role="alert">
+                  <strong>La calificación debe estar entre 50 y 100</strong>
+              </div>
           </div>
           <div class="radioB" >
   
               <div class="form-check">
                   <label class="form-check-label">
-                      <input 
+                      <input
+                        [(ngModel)]="alumno.sexo" 
                         type="radio" 
                         class="form-check-input sexoF" 
                         name="sexo"  
@@ -47,6 +51,7 @@
               <div class="form-check">
                   <label class="form-check-label">
                       <input 
+                          [(ngModel)]="alumno.sexo"
                           type="radio" 
                           class="form-check-input sexoM"  
                           name="sexo" 
@@ -57,7 +62,7 @@
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" >cancelar</button>
-              <button type="submit" class="btn btn-primary save" >Save</button>
+              <button type="submit" class="btn btn-primary save" [disabled]="!f.valid || !calificacionValida()" >Guardar</button>
           </div>
   
       </form>

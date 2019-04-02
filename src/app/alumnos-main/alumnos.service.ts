@@ -8,14 +8,28 @@ import { Alumno } from './Alumno';
 })
 export class AlumnosService {
   cambiaDato = new Subject<Alumno[]>();
+  private lastId = 1;
 
   private alumnos: Alumno[] = [
-    new Alumno(1, 'Alberto', 23, 80, 'ISC', 'M'),
-    new Alumno(2, 'Laura', 23, 86, 'ISC', 'F'),
-    new Alumno(3, 'Jaime', 23, 58, 'ISC', 'M'),
+    new Alumno(this.lastId++, 'Alberto', 23, 80, 'ISC', 'M'),
+    new Alumno(this.lastId++, 'Laura', 23, 86, 'ISC', 'F'),
+    new Alumno(this.lastId++, 'Jaime', 23, 58, 'ISC', 'M'),
   ];
 
   constructor() { }
+
+  getNextId(): number {
+    return this.lastId;
+  }
+
+  addAlumno(alumno: Alumno){
+    alumno.id = this.lastId;
+    //TODO: asegurar que no exista otro alumno con el mismo nombre
+    
+    this.alumnos.push(Object.assign({},alumno));
+    this.lastId++;
+    this.notificarCambios();
+  }
 
   getAlumnos(): Alumno[] {
     return this.alumnos.slice();
