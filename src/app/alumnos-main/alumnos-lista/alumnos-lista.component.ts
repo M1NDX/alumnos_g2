@@ -39,4 +39,9 @@ export class AlumnosListaComponent implements OnInit {
     //this.alumnos= this.alumnoService.getAlumnos();
  
   }
+
+  crearAlumno() {
+    //this.router.navigate(['alumnos/new']);
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }

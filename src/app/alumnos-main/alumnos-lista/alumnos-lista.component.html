@@ -1,6 +1,11 @@
 <!-- <p *ngFor="let alu of alumnos"> 
   {{alu.id}} nombre:{{alu.nombre}}
  </p> -->
+<br>
+<button (click)="crearAlumno()" type="button" id="btCrear" class="btn btn-success btn-lg mt-2" data-toggle="modal" data-target="#modelId">
+    Crear alumno
+</button>
+
 <div class="media-list lista justify-content-left">
     <app-alumno 
       *ngFor="let alu of alumnos" 
