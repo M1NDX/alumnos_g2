@@ -31,6 +31,18 @@ export class AlumnosService {
     this.notificarCambios();
   }
 
+  editAlumno(alumno: Alumno){
+    const pos = this.alumnos.findIndex(al => al.id === alumno.id);
+    Object.assign(this.alumnos[pos], alumno);
+    //this.alumnos[pos] = Object.assign({}, alumno);
+    this.notificarCambios();
+  }
+
+  getAlumno(id: number): Alumno {
+    const pos = this.alumnos.findIndex(al => al.id === id);
+    return Object.assign({}, this.alumnos[pos]);
+  }
+
   getAlumnos(): Alumno[] {
     return this.alumnos.slice();
   }

@@ -33,7 +33,7 @@
                   <strong>La calificación debe estar entre 50 y 100</strong>
               </div>
           </div>
-          <div class="radioB" >
+          <div class="radioB" *ngIf="modoAdd" >
   
               <div class="form-check">
                   <label class="form-check-label">
@@ -61,7 +61,7 @@
               </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" >cancelar</button>
+              <button type="button" class="btn btn-secondary" (click)="cancelar()" >cancelar</button>
               <button type="submit" class="btn btn-primary save" [disabled]="!f.valid || !calificacionValida()" >Guardar</button>
           </div>
   
