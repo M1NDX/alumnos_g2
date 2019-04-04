@@ -1,0 +1,101 @@
+<div class="container">
+
+   
+  <form [formGroup]="formulario">
+      <div class="form-group">
+          <label for="">Clave Grupo</label>
+          <input  type="text"  class="form-control nombre" placeholder="clave grupo" disabled="true"  >
+
+          <label for="">Asignatura</label>
+          <div class="form-group">
+            <select class="form-control"   >
+              <option *ngFor="let opcion of asignaturas; let i = index" [value]="opcion.clave" > 
+                  {{ opcion.nombre }}
+              </option> 
+            </select>
+          </div>
+     
+              <label for="">Profesor</label>
+              <select  class="form-control"  >
+                <option *ngFor="let opcion of profesores; let i = index" [value]="opcion.inside"  > 
+                    {{ opcion.nombre }}
+                </option>
+              </select>
+
+              <label for="">Periodo</label>
+              <select  class="form-control" >
+                <!-- <option *ngFor="let opcion of periodos" > 
+                    {{ opcion }}
+                </option> -->
+              </select>
+             
+      
+          <label for="">Cupo</label>
+          <input type="number" class="form-control edad" min="15" max="32" 
+              aria-describedby="helpId" placeholder="cantidad de alumnos" required>
+           <div class="row mt-2">
+
+              <label for="">Día:</label>
+              <div class="col-3 form-group">
+                <select  class="form-control"  >
+                  <!-- <option *ngFor="let opcion of dias"  > 
+                      {{ opcion }}
+                  </option> -->
+                </select>
+              </div>
+
+              <label for="">Hora:</label>
+          <div class=" col-3 form-group">
+            <select  class="form-control"   >
+              <!-- <option *ngFor="let opcion of horarios" > 
+                  {{ opcion }}
+              </option> -->
+            </select>
+          </div>
+
+          <label for="">Aula: </label>
+          <div class="col-3  form-group">
+            <select  class="form-control"  >
+              <!-- <option *ngFor="let opcion of aulas"  > 
+                  {{ opcion }}
+              </option> -->
+            </select>
+          </div>
+          <button  type="button" class="btn btn-info btn-circle btn-lg"> <i class="fas fa-plus"></i>
+          </button>
+          </div>   
+          <div class="row">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Día</th>
+                      <th scope="col">Hora</th>
+                      <th scope="col">Aula</th>
+                      <th scope="col">Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>dia1</td>
+                      <td>horario1</td>
+                      <td>Aula1</td>
+                      <td><button type="button" class="btn btn-danger btn-circle btn-lg"> <i class="fas fa-minus"></i>
+                      </button></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+          </div>    
+      </div>
+      
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" >Cancelar</button>
+          <button type="submit" class="btn btn-primary save" >Guardar</button>
+      </div>
+
+  </form>
+</div>
+
+<p>{{formulario.value | json}}</p>
