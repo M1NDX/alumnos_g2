@@ -17,16 +17,19 @@ export class GrupoEditComponent implements OnInit {
   asignaturas = [];
   profesores = [];
 
+  
+
   constructor(private grupoService: GrupoService) { }
 
   ngOnInit() {
     console.log(this.grupoService.asignaturas);
     this.asignaturas = this.grupoService.asignaturas;
     this.profesores = this.grupoService.profesores;
-    
+
     this.formulario = new FormGroup({
        claveAsignatura: new FormControl(''),
        claveProfesor: new FormControl(''),
+
     });
 
   }

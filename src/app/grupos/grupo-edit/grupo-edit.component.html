@@ -8,7 +8,7 @@
 
           <label for="">Asignatura</label>
           <div class="form-group">
-            <select class="form-control"   >
+            <select class="form-control" formControlName ="claveAsignatura"   >
               <option *ngFor="let opcion of asignaturas; let i = index" [value]="opcion.clave" > 
                   {{ opcion.nombre }}
               </option> 
@@ -16,8 +16,8 @@
           </div>
      
               <label for="">Profesor</label>
-              <select  class="form-control"  >
-                <option *ngFor="let opcion of profesores; let i = index" [value]="opcion.inside"  > 
+              <select  class="form-control" formControlName ="claveProfesor" >
+                <option *ngFor="let opcion of profesores; let i = index" [value]="opcion.id"  > 
                     {{ opcion.nombre }}
                 </option>
               </select>
