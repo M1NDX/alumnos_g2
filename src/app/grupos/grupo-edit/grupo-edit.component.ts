@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GrupoService } from '../grupo.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-grupo-edit',
@@ -17,6 +17,9 @@ export class GrupoEditComponent implements OnInit {
   asignaturas = [];
   profesores = [];
 
+  tabla = [
+    {dia:'Lunes', hora:'18-20', aula:'T-202'},
+    {dia:'Miércoles', hora:'18-20', aula:'T-202'}];
   
 
   constructor(private grupoService: GrupoService) { }
@@ -27,11 +30,15 @@ export class GrupoEditComponent implements OnInit {
     this.profesores = this.grupoService.profesores;
 
     this.formulario = new FormGroup({
-       claveAsignatura: new FormControl(''),
-       claveProfesor: new FormControl(''),
-
+       claveAsignatura: new FormControl(this.asignaturas[1].clave,[Validators.required]),
+       claveProfesor: new FormControl(this.profesores[1].id),
     });
+    
+  }
 
+  submit(){
+    const grupo = this.formulario.value;
+    console.log(grupo);
   }
 
 }

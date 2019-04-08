@@ -1,7 +1,7 @@
 <div class="container">
 
    
-  <form [formGroup]="formulario">
+  <form [formGroup]="formulario" (ngSubmit)="submit()">
       <div class="form-group">
           <label for="">Clave Grupo</label>
           <input  type="text"  class="form-control nombre" placeholder="clave grupo" disabled="true"  >
@@ -9,7 +9,7 @@
           <label for="">Asignatura</label>
           <div class="form-group">
             <select class="form-control" formControlName ="claveAsignatura"   >
-              <option *ngFor="let opcion of asignaturas; let i = index" [value]="opcion.clave" > 
+              <option *ngFor="let opcion of asignaturas" [value]="opcion.clave" > 
                   {{ opcion.nombre }}
               </option> 
             </select>
@@ -17,7 +17,7 @@
      
               <label for="">Profesor</label>
               <select  class="form-control" formControlName ="claveProfesor" >
-                <option *ngFor="let opcion of profesores; let i = index" [value]="opcion.id"  > 
+                <option *ngFor="let opcion of profesores" [value]="opcion.id"  > 
                     {{ opcion.nombre }}
                 </option>
               </select>
@@ -76,11 +76,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>dia1</td>
-                      <td>horario1</td>
-                      <td>Aula1</td>
+                    <tr *ngFor="let item of tabla; let i = index">
+                      <th scope="row">{{i}}</th>
+                      <td>{{item.dia}}</td>
+                      <td>{{item.hora}}</td>
+                      <td>{{item.aula}}</td>
                       <td><button type="button" class="btn btn-danger btn-circle btn-lg"> <i class="fas fa-minus"></i>
                       </button></td>
                     </tr>

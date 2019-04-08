@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', component: AlumnosListaComponent },
       { path: 'new', component: AlumnoEditComponent },
       { path: ':id', component: AlumnoDetalleComponent },
-      { path: ':id/edit', component: AlumnoEditComponent },
+      { path: ':id/edit', component: AlumnoEditComponent, canActivate: [] },
     ]
   },
   {
